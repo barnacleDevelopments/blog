@@ -1,0 +1,31 @@
+<% include partials/header %>
+<div>
+    <h1>Edit: <%=blog.title%> </h1>
+    <form method="POST" action="/blogs/<%=blog._id%>?_method=PUT">
+        <div >
+            <label for="Blog_Title">Blog title:</label>
+            <input type="text" name="blog[title]" value="<%=blog.title%>">            
+        </div>
+
+        <div>
+            <label for="Blog_Image">Upload blog image:</label>
+            <input type="text" name="blog[image]" value="<%=blog.image%>">
+        </div>
+
+        <div>
+            <label for="Blog_Content">Blog content:</label>
+            <div>
+                <button><i></i></button>
+                <button><i></i></button>
+                <button><i></i></button>
+            </div>
+            <textarea><%=blog.content%></textarea>
+        </div>
+        <input type="submit">
+        <a href="/blogs">BACK</a>
+    </form>
+
+    
+</div>
+
+<% include partials/footer %>
