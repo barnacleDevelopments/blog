@@ -12,11 +12,17 @@
   "author": "Devin",
   "license": "ISC",
   "dependencies": {
+    "@okta/oidc-middleware": "^2.0.0",
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
     "ejs": "^2.7.1",
     "express": "^4.17.1",
     "express-sanitizer": "^1.0.5",
+    "express-session": "^1.16.2",
     "method-override": "^3.0.0",
-    "mongoose": "^5.7.7"
+    "mongoose": "^5.7.7",
+    "njwt": "^1.0.0",
+    "nnode": "^0.3.3"
   }
 }
