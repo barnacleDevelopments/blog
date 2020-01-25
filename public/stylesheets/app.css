@@ -68,7 +68,6 @@ body {
 .blog-show-container {
     display: grid;
     margin: 20px;
-
 }
 
 .blog-show-container h1 {
@@ -84,15 +83,31 @@ body {
 
 .img-container {
     float: left;
-    margin: 0px 20px 2px 0px;
+    margin: 0px 20px 0px 0px;
 }
 
 .img-container img {
     width: 200px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5)
 }
 
-.blog-show-container p {
+.img-container div {
+    font-size: 2rem;
+    text-align: center;
+    opacity: .5;
+    margin-top: 15px;
+}
 
+.blog-show-container form {
+    margin-top: 10px;
+}
+
+.blog-show-container input {
+    background-color: rgb(252, 99, 82);
+    border: none;
+    color: white;
+    border-radius: 5px;
+    height: 30px;
 }
 
 .blog-show-content {
