@@ -1,27 +1,32 @@
 <% include partials/header %>
-<div>
-    <h1>Create a Blog Post:</h1>
+<div class="blog-create-form">
     <form action="/blogs" method="POST">
-        <div>
-            <label for="Blog_Title">Blog title:</label>
+        <div class="content-area">
             <input type="text" name="blog[title]" placeholder="title here">            
-        </div>
-
-        <div>
-            <label for="Blog_Image">Upload blog image:</label>
             <input type="text" name="blog[image]" placeholder="image url here">
+            
+        </div>
+        <div class="editor">
+        <div class="tool-bar">
+            <div>
+                <a href="javascript:void(0)" class="bold-btn"><span>B</span></a>
+            </div>
+            <div>
+                <a href="javascript:void(0)" class="italics-btn"><span>I</span></a>
+            </div>
+            <div>
+                <a href="javascript:void(0)" class="underline-btn"><span>U</span></a>
+            </div>
+            <div>
+                <a href="javascript:void(0)" class="list-btn"><span>l</span></a>
+            </div>
+        </div>
+            <div class="text-area" contenteditable="true"></div>
+            <textarea class="text-content" name="blog[content]"></textarea>
         </div>
 
-        <div>
-            <label for="Blog_Content">Blog content:</label>
-            <div>
-                <button><i></i></button>
-                <button><i></i></button>
-                <button><i></i></button>
-            </div>
-            <textarea name="blog[content]"></textarea>
-        </div>
-        <input type="submit">
+            <input type="submit">
+
         <a href="/blogs"></a>
     </form>
 </div>
