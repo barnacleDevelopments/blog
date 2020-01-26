@@ -3,17 +3,17 @@
         <div class="blog-show-content">
             <div class="img-container">
                 <img src="<%=blog.image%>" alt="">
-                <div>JAN 24th</div>
+                <div><%=blog.date%></div>
             </div>
             <h1><%=blog.title%></h1>
             <hr>
             <p><%- blog.content %></p>
-     
-           <form action="/blogs/:id?_method=DELETE" method="POST">
-                <input type="submit" value="DELETE">
-            </form>
-            <ahref="/blogs/<%=blog._id%>/edit">EDIT</a>
+            <div class="show-btns">
+                <form action="/blogs/:id?_method=DELETE" method="POST">
+                    <input type="submit" value="DELETE">
+                </form>
+ >/edit"><butto               <a href="/blogs/<%=blog._id%n>EDIT</button></a>
+            </div>
         </div>
     </div>
-  
 <% include partials/footer %>

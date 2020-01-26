@@ -1,9 +1,8 @@
 <% include partials/header %>
-<div class="blog-create-form">
-    <form action="/blogs" method="POST">
+    <form class="blog-form" action="/blogs" method="POST">
         <div class="content-area">
-            <input type="text" name="blog[title]" placeholder="title here">            
-            <input type="text" name="blog[image]" placeholder="image url here">
+            <input type="text" name="title" placeholder="title here">            
+            <input type="text" name="image" placeholder="image url here">
             
         </div>
         <div class="editor">
@@ -21,15 +20,14 @@
                 <a href="javascript:void(0)" class="list-btn"><span>l</span></a>
             </div>
         </div>
-            <div class="text-area" contenteditable="true"></div>
-            <textarea class="text-content" name="blog[content]"></textarea>
+            <div placeholder="text goes here" class="text-area" contenteditable="true"></div>
+            <textarea placeholder="text goes here" class="text-content" name="content"></textarea>
         </div>
 
             <input type="submit">
 
         <a href="/blogs"></a>
     </form>
-</div>
 
 <% include partials/footer %>
 

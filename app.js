@@ -1,29 +1,22 @@
+//depencies 
 var bodyParser = require("body-parser"),
     mongoose   = require("mongoose"),
     express    = require("express"),
     app        = express(),
     expressSanitizer = require("express-sanitizer")
     
+//models 
+const Blog = require("./models/Blog")
+
+    mongoose.set('useFindAndModify', false);
     var methodOverride = require("method-override")
 
-
-    
     app.use(methodOverride("_method"));
     mongoose.connect("mongodb://localhost/first_blog", {useUnifiedTopology: true, useNewUrlParser: true});
     app.use(expressSanitizer());
     app.use(bodyParser.urlencoded({extended: true}));
     app.use(express.static("public"));
     app.set("view engine", "ejs");
-    
-    var blogSchema = new mongoose.Schema({
-        title: String,
-        image: String,
-        content: String,
-        date: {type: Date, default: Date.now}
-    });
-    
-    var Blog = mongoose.model("Blog", blogSchema);
-
 
     app.get("/", (req, res) => {
         res.redirect("/blogs")
@@ -46,9 +39,14 @@ var bodyParser = require("body-parser"),
 
     //create blog post
     app.post("/blogs", (req, res) => {
-        req.body.blog.content = req.sanitize(req.body.blog.content);
-        var blogPost = req.body.blog;
-            Blog.create(blogPost, (err, blogs) => {
+        req.body.content = req.sanitize(req.body.content);
+        let blog = {
+            title: req.body.title,
+            content: req.body.content,
+            image: req.body.image
+        }
+
+            Blog.create(blog, (err, blogs) => {
                 if(err){
                     res.render("new")
                 } else {
@@ -83,7 +81,13 @@ var bodyParser = require("body-parser"),
     
 
     app.put("/blogs/:id", (req, res) => {
-         Blog.findByIdAndUpdate(req.params.id, req.body.blog, (err, updatedBlog) => {
+        let blog = {
+            title: req.body.title,
+            content: req.body.content,
+            image: req.body.image
+        }
+
+         Blog.findByIdAndUpdate(req.params.id, blog, (err, updatedBlog) => {
               if(err) {
                   console.log(err)
              } else {
