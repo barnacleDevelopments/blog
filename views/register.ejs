@@ -1,0 +1,16 @@
+<% include partials/header %>
+    <div class="register-container">
+        <form action="/register" method="POST">
+            <div>
+                <lable for="username">User:</lable>
+                <input type="text" name="username">
+            </div>
+
+            <div>
+                <label for="password">Password:</label>
+                <input type="text" name="password">
+            </div>
+            <button>Register</button>
+        </form>
+    </div>
+<% include partials/footer %>
