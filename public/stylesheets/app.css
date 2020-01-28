@@ -3,15 +3,33 @@ body {
     background-color: #d3d3d3;
 }
 
+footer {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.app-wrap {
+    width: 80%;
+    margin: 0 auto;
+    background-color: rgb(238, 238, 238);
+}
+
 /*nav*/
 
 .navbar {
-    background-color: #656565;
+    background-color: rgb(238, 238, 238);
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.main-logo img {
+    width: 100px;
+
 }
 
 .main-nav {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr 2fr 2fr 1fr;
     justify-content: space-around;
     align-items: center;
     font-size: 1.5rem;
@@ -19,11 +37,17 @@ body {
     margin: 0;
     padding-top: 10px;
     padding-bottom: 10px;
+    text-align: center;
 }
 
 .main-nav a {
     text-decoration: none;
-    color: white;
+    color: black;
+    text-transform: uppercase;
+}
+
+.main-nav {
+    width: 800px;
 }
 
 .main-nav  button {
@@ -39,6 +63,29 @@ body {
     color: white;
 }
 
+/* Home */
+.home-intro {
+    margin: 50px auto;
+    width: 70%;
+    height: 1000px;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+.home-intro div:nth-of-type(1) {
+    margin: 20px;
+}
+
+.home-intro p {
+    font-size: 1.2rem;
+    line-height: 2rem;
+}
+
+.home-portrait img {
+    width: 300px;
+}
+
+
 /* body */
 .post-list {
     margin: 20px;
@@ -51,14 +98,10 @@ body {
 }
 
 .post-list-description {
-    padding: 0px 10px 0px 10px;
+    padding: 10px;
 }
 
 .post-list-description h1 {
-    margin: 0;
-}
-
-.post-list-description p {
     margin: 0;
 }
 
@@ -68,28 +111,14 @@ body {
     font-size: 1.5rem;
 }
 
-.post-list-description button {
-    border: 2px solid rgba(0, 0, 8, 0.6);
-    color: 2px solid rgba(0, 0, 8, 0.6);
-    border-radius: 5px;
-    background-color: transparent;
-    padding: 10px;
-}
-
-.post-list-description button:hover {
-    box-shadow: 2px 2px 4px rgba(0, 0, 8, 0.2);
-}
-
-.post-list-description > a {
-    color: rgba(0, 0, 8, 0.6);
-}
-
-
 /* blog show */
 
 .blog-show-container {
     display: grid;
     margin: 20px;
+    width: 80%;
+    margin: 50px auto;
+
 }
 
 .blog-show-container h1 {
@@ -120,44 +149,20 @@ body {
     margin-top: 15px;
 }
 
-.show-btn form  {
-    height: 100%;
+.blog-show-container form {
+    margin-top: 10px;
 }
 
-.show-btns {
-    display: flex;
-    width: 125px;
-    justify-content: space-between;
-}
-
-.show-btns input {
-    border: 2px solid rgba(0, 0, 8, 0.6);
-    color: 2px solid rgba(0, 0, 8, 0.6);
+.blog-show-container input {
+    background-color: rgb(252, 99, 82);
+    border: none;
+    color: white;
     border-radius: 5px;
-    background-color: transparent;
-    padding: 10px;
+    height: 30px;
 }
 
-.show-btns input:hover {
-    box-shadow: 1px 1px 2px rgba(0, 0, 8, 0.6);
-}
-
-.show-btns button:hover {
-    box-shadow: 1px 1px 2px rgba(0, 0, 8, 0.6);
-}
-
-.show-btns a button {
-    border: 2px solid rgba(0, 0, 8, 0.6);
-    color: 2px solid rgba(0, 0, 8, 0.6);
-    border-radius: 5px;
-    background-color: transparent;
-    padding: 10px;
-}
-
-
-.show-btns a button {
-    border: 2px solid rgba(189, 0, 0, 0.6);
-    color: rgba(189, 0, 0, 0.6);
+.blog-show-content {
+    
 }
 
 
@@ -187,7 +192,8 @@ body {
 .blog-create-form form {
     width: 100%;
     justify-content: center;
-    align-content: center; 
+    align-content: center;
+    
 }
 
 .tool-bar {
@@ -219,7 +225,7 @@ body {
 
 
 .tool-bar > div:hover  {
-   box-shadow: 2px 2px 4px rgba(0, 0, 8, 0.4);
+   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
 }
 
 .tool-bar div > a {
@@ -234,15 +240,6 @@ body {
     padding: 30px;
     text-align: left;
     border-radius: 5px;
-    margin: 0;
-    font-size: 1.2rem;
-    line-height: 1.7rem;
-    overflow-y: scroll;
-}
-
-.text-area::-webkit-scrollbar {
-    font-display: none;
-    display: block;;
 }
 
 .text-content {
@@ -258,7 +255,6 @@ body {
 
 .content-area {
     margin-top: 50px;
-    text-align: center;
 }
 
 .content-area > input {
@@ -268,10 +264,4 @@ body {
     margin-left: 3px;
     margin-right: 3px;
     font-size: 1rem;
-    box-shadow: 2px 2px 4px rgba(0, 0, 8, 0.2);
-}
-
-/* edit page */
-.edit-title {
-    text-align: center;
 }

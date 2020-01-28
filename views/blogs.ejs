@@ -1,0 +1,19 @@
+<% include partials/header %>
+<div>
+    <% blogs.forEach((blog) => { %>
+        <div class="post-list">
+                <div>
+                    <img src="<%= blog.image %>" alt="responsive image">
+                </div>
+                <div class="post-list-description">
+                    <h1><a href="/blogs/<%=blog._id%>"><%=blog.title%></a></h1>
+                    <p><%- blog.content.substring(0, 100) %>...</p>
+                    <p><%= blog.date.toDateString() %></p>
+                    <a href="/blogs/<%=blog._id%>"><button>Read More</button></a> 
+                </div c>
+        </div>
+    <% }); %> 
+</div>
+
+
+<% include partials/footer %>

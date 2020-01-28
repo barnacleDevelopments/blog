@@ -1,19 +1,18 @@
 <% include partials/header %>
-<div>
-    <% blogs.forEach((blog) => { %>
-        <div class="post-list">
-                <div>
-                    <img src="<%= blog.image %>" alt="responsive image">
-                </div>
-                <div class="post-list-description">
-                    <h1><a href="/blogs/<%=blog._id%>"><%=blog.title%></a></h1>
-                    <p><%- blog.content.substring(0, 100) %>...</p>
-                    <p><%= blog.date %></p>
-                    <a href="/blogs/<%=blog._id%>"><button>Read More</button></a> 
-                </div>
+    <div class="home-intro">
+        <div class="home-portrait">
+            <img src="/img/portrait.jpg" alt="">
         </div>
-    <% }); %> 
-</div>
-
-
+        
+        <div>
+            <h1>A little about me:</h1>
+            <p>I'm an up and coming web developer who is seeking to introduce and assist companies with web development.
+               Whether that be implementing changes to an existing website or developing a new one entirely.
+                I've got the know how to help you, and if not I'll figure it out! I want to provide services
+                 that meet if not exceeds your expectations, that being the case I make it priority to maintain
+                  ongoing communication with my customers during and following all services provided. Whether you
+                   need support now or again sometime in the future, we will keep in touch...</p>
+        </div>
+    
+    </div>
 <% include partials/footer %>
