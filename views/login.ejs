@@ -1,0 +1,15 @@
+<% include partials/header %>
+    <div class="login-container">
+        <form action="/login" method="post">
+            <div>
+                <lable for="username">User:</lable>
+                <input type="text" name="username">
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="text" name="password">
+            </div>
+            <button>Login</button>
+        </form>
+    </div>
+<% include partials/footer %>

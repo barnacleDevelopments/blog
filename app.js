@@ -2,105 +2,105 @@ var bodyParser = require("body-parser"),
     mongoose   = require("mongoose"),
     express    = require("express"),
     app        = express(),
-    expressSanitizer = require("express-sanitizer")
-    
-    var methodOverride = require("method-override")
+    expressSanitizer = require("express-sanitizer"),
+    helmet           = require("helmet"),
+    session          = require("express-session"),
+    passport         = require("passport"),
+    methodOverride = require("method-override"),
+    LocalStrategy  = require("passport-local"),
+    passportLocalMongoose = require("passport-local-mongoose")
 
-
-    
+    app.use(helmet({dnsPrefetchControl: {allow: true}}))
     app.use(methodOverride("_method"));
-    mongoose.connect("mongodb://localhost/first_blog", {useUnifiedTopology: true, useNewUrlParser: true});
     app.use(expressSanitizer());
     app.use(bodyParser.urlencoded({extended: true}));
     app.use(express.static("public"));
     app.set("view engine", "ejs");
-    
-    var blogSchema = new mongoose.Schema({
-        title: String,
-        image: String,
-        content: String,
-        date: {type: Date, default: Date.now}
-    });
-    
-    var Blog = mongoose.model("Blog", blogSchema);
 
+
+
+    const blogRoutes = require("./routes/blog-routes")
+    app.use("/", blogRoutes)
+    const User = require("./models/Users")
+
+    
+    process.env.SESSION_SECRET="GrapesFallFromBranches"
+    process.env.DATABASE="mongodb+srv://firstdb:6KYrct0c3qNZRcZp@cluster0-1t4lu.mongodb.net/test?retryWrites=true&w=majority"
+
+    mongoose.connect(process.env.DATABASE, { useUnifiedTopology: true, useNewUrlParser: true } )
+    .then(() => {
+        console.log("connected to database")
+    })
+
+    app.use(session({
+        secret: process.env.SESSION_SECRET,
+        resave: false,
+        saveUninitialized: false,
+      }));
+      
+      app.use(passport.initialize());
+      app.use(passport.session());
+
+      passport.use(User.createStrategy())
+
+      passport.use(new LocalStrategy(User.authenticate()))
+
+      passport.serializeUser(User.serializeUser())
+      passport.deserializeUser(User.deserializeUser())
+
+
+    //routes 
+    app.use(function(req, res, next) {
+        res.locals.currentUser = req.user
+        next()
+    })
 
     app.get("/", (req, res) => {
         res.render("index")
     });
+    
+    app.get("/register", (req, res) => {
+        res.render("register")
+    })
+    app.post("/register", (req, res) => {
+      User.register(new User({username: req.body.username}), req.body.password, function(err, user) {
+          if(err) {
+              console.log(err)
+              res.render("register")
+          } else {
+              console.log(user)
+              passport.authenticate("local")(req, res, function(){
+                res.redirect("/")
+              })
+          
+          }
+      })
+    })
+
+    app.get("/login", (req, res) => {
+        res.render("login")
+    })
+
+    app.post("/login", passport.authenticate("local", {
+        successRedirect: "/",
+        failureRedirect: "/login"
+    }), function(req, res) {
+
+    })
+
+    app.get("/logout", (req, res) => {
+        req.logout()
+        res.redirect("/login")
+    })
+    
+    function isMember(req, res, next) {
+        if(req.isAuthenticated()) {
+            return next()
+        }
+        res.redirect("/login")
+    }
 
     //get all the blogs
-    app.get("/blogs", (req, res) => {
-        Blog.find({}, (err, blogs) => {
-            if(err){
-                console.log(err)
-            } else {
-                res.render("blogs", {blogs: blogs});
-            }
-        });
-    });
-
-    app.get("/blogs/new", (req, res) => {
-        res.render("new")
-    });
-
-    //create blog post
-    app.post("/blogs", (req, res) => {
-        req.body.blog.content = req.sanitize(req.body.blog.content);
-        var blogPost = req.body.blog;
-            Blog.create(blogPost, (err, blogs) => {
-                if(err){
-                    res.render("new")
-                } else {
-                    console.log(blogs)
-                    res.redirect("/blogs")
-                }
-            });
-    });
-
-    //show a focused view of a single sellected blog post
-    app.get("/blogs/:id", (req, res) => {
-        Blog.findById(req.params.id, (err, singleBlog) => {
-            if(err) {
-                res.redirect("/blogs")
-            } else {
-                res.render("show", {blog: singleBlog});
-            }
-        });
-    });
-
-    //render edit page 
-    app.get("/blogs/:id/edit", (req, res) => {
-        Blog.findById(req.params.id, (err, blogEdit) => {
-            if(err){
-                console.log(err);
-                res.redirect("/blogs"); 
-            } else {
-                res.render("edit", {blog: blogEdit});
-            }
-        });
-    });
-    
-
-    app.put("/blogs/:id", (req, res) => {
-         Blog.findByIdAndUpdate(req.params.id, req.body.blog, (err, updatedBlog) => {
-              if(err) {
-                  console.log(err)
-             } else {
-                 res.redirect("/blogs/" + updatedBlog._id)
-             }
-        });
-    });
-
-    app.delete("/blogs/:id", (req, res) => {
-        Blog.findOneAndDelete(req.params.id, req.body.blog, (err) => {
-            if(err) {
-                console.log(err);
-            } else {
-                res.redirect("/blogs");
-            }
-        })
-    })
 
     app.listen(3000, () => {
         console.log("Blog started!")        
