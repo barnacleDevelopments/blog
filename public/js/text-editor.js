@@ -3,7 +3,7 @@ const italicsBtn = document.querySelector(".italics-btn")
 const underlineBtn = document.querySelector(".underline-btn")
 const listBtn = document.querySelector(".list-btn")
 const textArea = document.querySelector(".text-area")
-const blogForm = document.querySelector(".blog-create-form").firstElementChild
+const blogForm = document.querySelector(".blog-create-form")
 const textContent = document.querySelector(".text-content")
 
 console.log(blogForm)
@@ -14,7 +14,6 @@ function format(command, value) {
 
  function getContent() {
      console.log(textArea.textContent)
-     console.log("rfthfh")
     textContent.value = textArea.innerHTML
  }
 

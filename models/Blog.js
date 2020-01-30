@@ -1,18 +1,13 @@
-   const mongoose = require("mongoose")
+const mongoose = require("mongoose")
 
-   const date = new Date
+var blogSchema = new mongoose.Schema({
+     title: String,
+     image: String,
+     content: String,
+     date: String
 
-   const currentDate = date.getMonth()
+ });
+ 
+ var Blog = mongoose.model("Blog", blogSchema);
 
-   console.log(currentDate)
-
-   var blogSchema = new mongoose.Schema({
-        title: String,
-        image: String,
-        content: String,
-        date: currentDate
-    });
-    
-    var Blog = mongoose.model("Blog", blogSchema);
-
-   module.exports = Blog
+module.exports = Blog

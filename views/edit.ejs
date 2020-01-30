@@ -1,31 +1,32 @@
 <% include partials/header %>
-<div>
-    <h1>Edit: <%=blog.title%> </h1>
-    <form method="POST" action="/blogs/<%=blog._id%>?_method=PUT">
-        <div >
-            <label for="Blog_Title">Blog title:</label>
-            <input type="text" name="blog[title]" value="<%=blog.title%>">            
+    <form class="blog-form" action="/blogs" method="POST">
+        <div class="content-area">
+            <input type="text" value="<%=blog.title%>" name="title" placeholder="title here">            
+            <input type="text" value="<%=blog.image%>" name="image" placeholder="image url here">
         </div>
-
-        <div>
-            <label for="Blog_Image">Upload blog image:</label>
-            <input type="text" name="blog[image]" value="<%=blog.image%>">
-        </div>
-
-        <div>
-            <label for="Blog_Content">Blog content:</label>
+        <div class="editor">
+        <div class="tool-bar">
             <div>
-                <button><i></i></button>
-                <button><i></i></button>
-                <button><i></i></button>
+                <a href="javascript:void(0)" class="bold-btn"><span>B</span></a>
             </div>
-            <textarea><%=blog.content%></textarea>
+            <div>
+                <a href="javascript:void(0)" class="italics-btn"><span>I</span></a>
+            </div>
+            <div>
+                <a href="javascript:void(0)" class="underline-btn"><span>U</span></a>
+            </div>
+            <div>
+                <a href="javascript:void(0)" class="list-btn"><span>l</span></a>
+            </div>
         </div>
-        <input type="submit">
-        <a href="/blogs">BACK</a>
-    </form>
+            <div placeholder="text goes here" class="text-area" contenteditable="true"><%=blog.content%></div>
+            <textarea placeholder="text goes here" class="text-content" name="content"></textarea>
+        </div>
 
-    
-</div>
+        <div class="blog-form-submit">
+            <input type="submit" value="Submit">
+        </div>
+        <a href="/blogs"></a>
+    </form>
 
 <% include partials/footer %>

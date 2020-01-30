@@ -1,9 +1,9 @@
 <% include partials/header %>
-<div class="blog-create-form">
-    <form action="/blogs" method="POST">
+<div>
+    <form class="blog-create-form" action="/blogs" method="POST">
         <div class="content-area">
-            <input type="text" name="blog[title]" placeholder="title here">            
-            <input type="text" name="blog[image]" placeholder="image url here">
+            <input type="text" name="title" placeholder="title here">            
+            <input type="text" name="image" placeholder="image url here">
             
         </div>
         <div class="editor">
@@ -22,7 +22,7 @@
             </div>
         </div>
             <div class="text-area" contenteditable="true"></div>
-            <textarea class="text-content" name="blog[content]"></textarea>
+            <textarea class="text-content" name="content"></textarea>
         </div>
 
             <input type="submit">
