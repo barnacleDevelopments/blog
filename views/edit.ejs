@@ -1,25 +1,20 @@
 <% include partials/header %>
-    <form class="blog-form" action="/blogs" method="POST">
+    <form class="blog-create-form" action="/blogs/<%=blog._id%>?_method=PUT" method="POST">
         <div class="content-area">
             <input type="text" value="<%=blog.title%>" name="title" placeholder="title here">            
             <input type="text" value="<%=blog.image%>" name="image" placeholder="image url here">
         </div>
         <div class="editor">
         <div class="tool-bar">
-            <div>
-                <a href="javascript:void(0)" class="bold-btn"><span>B</span></a>
-            </div>
-            <div>
-                <a href="javascript:void(0)" class="italics-btn"><span>I</span></a>
-            </div>
-            <div>
-                <a href="javascript:void(0)" class="underline-btn"><span>U</span></a>
-            </div>
-            <div>
-                <a href="javascript:void(0)" class="list-btn"><span>l</span></a>
-            </div>
+            <button href="javascript:void(0)" class="bold-btn">B</button>
+
+            <button href="javascript:void(0)" class="italics-btn">I</button>
+            
+            <button href="javascript:void(0)" class="underline-btn">U</button>
+          
+            <button href="javascript:void(0)" class="list-btn">L</button>
         </div>
-            <div placeholder="text goes here" class="text-area" contenteditable="true"><%=blog.content%></div>
+            <div placeholder="text goes here" class="text-area" contenteditable="true"><%-blog.content%></div>
             <textarea placeholder="text goes here" class="text-content" name="content"></textarea>
         </div>
 

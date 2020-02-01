@@ -18,29 +18,35 @@ function format(command, value) {
  }
 
 
- boldBtn.addEventListener("click", () => {
+ blogForm.addEventListener("submit", () => {
+   getContent()
+})
+
+
+ boldBtn.addEventListener("click", (e) => {
+   e.preventDefault()
     format("bold")
     textArea.focus()
  })
 
- italicsBtn.addEventListener("click", () => {
+ italicsBtn.addEventListener("click", (e) => {
+   e.preventDefault()
    format("italic")
    textArea.focus()
 })
 
 
-underlineBtn.addEventListener("click", () => {
+underlineBtn.addEventListener("click", (e) => {
+   e.preventDefault()
    format("underline")
    textArea.focus()
 })
 
 
-listBtn.addEventListener("click", () => {
+listBtn.addEventListener("click", (e) => {
+   e.preventDefault()
    format("insertunorderedlist")
    textArea.focus()
 })
 
-blogForm.addEventListener("submit", () => {
-    getContent()
-})
 

@@ -5,15 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/stylesheets/app.css">
+    <link rel="stylesheet" href="/stylesheets/home.css">
+    <link rel="stylesheet" href="/stylesheets/blog-show.css">
+    <link rel="stylesheet" href="/stylesheets/blog-list.css">
+    <link rel="stylesheet" href="/stylesheets/blog-editor.css">
+    <link rel="stylesheet" href="/stylesheets/login.css">
+    <script src="https://kit.fontawesome.com/2cea744347.js" crossorigin="anonymous"></script>
     <title>First blog</title>
 </head>
 <body>
   <div class="app-wrap">
   <div>
     <div class="navbar">
+      <div class="main-logo"><img src="/img/logo.png"></div>
       <div class="main-nav">
         <ul>
-            <li><div class="main-logo"><img src="/img/logo.png"></div></li>
               <li><a href="/">Home</a></li>
               <li><a href="/blogs">Blog</a></li>
               <li><a href="/blogs/new">Projects</a></li>
@@ -21,16 +27,19 @@
       </div>
        
       <div class="member-nav">
-        <ul >
-          <% if(!currentUser) { %>
-            <li><a href="/login">Login</a></li>
-            <li><a href="/register">Register</a></li>
+        <% if(!currentUser) { %>
+        <ul>
+            <li class="login-btn"><a href="/login"><button>LOGIN</button></a></li>
+            <li><a href="/register"><button>REGISTER</button></a></li>
+        </ul>
           <% } else { %>
-            <li><a href="/logout">Logout</a></li>
+          <div class="logout-btn">
+            <a href="/logout"><button>LOGOUT</button></a>
+          </div>
           <% } %>
           <% console.log(currentUser) %>
          
-        </ul>
+ 
       </div>
         
 

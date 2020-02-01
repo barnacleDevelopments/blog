@@ -1,6 +1,9 @@
 const express  = require("express")
 const app      = express()
 const router    = express.Router()
+const mongoose  = require("mongoose")
+
+mongoose.set('useFindAndModify', false);
 
 //models
 const Blog     = require("../models/Blog")
@@ -10,11 +13,11 @@ router.get("/", (req, res) => {
 });
 
 router.get("/blogs", (req, res) => {
-    const user = req.user
     Blog.find({}, (err, blogs) => {
         if(err){
             console.log(err)
         } else {
+            console.log(blogs)
             res.render("blogs", {blogs: blogs});
         }
     });
@@ -32,27 +35,35 @@ const date = new Date()
 const month = date.getMonth(),
       day   = date.getDate(),
       year  = date.getFullYear()
+
+      function convertMonthNum(monthNum) {
+          let months = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"  ]
+          return months[monthNum]
+      }
     
     let blog = {
         title: req.body.title,
         content: req.body.content,
         image: req.body.image,
-        date: `${month} ${day}, ${year}`
+        date: `${convertMonthNum(month)} ${day}, ${year}`
     }
 
-    blog.content = req.sanitize(req.body.content);
-    blog.title = req.sanitize(req.body.title);
-    blog.image = req.sanitize(req.body.image);
-  
+    if(blog.content) {
+        blog.content = req.sanitize(req.body.content);
+        blog.title = req.sanitize(req.body.title);
+        blog.image = req.sanitize(req.body.image);
 
-    Blog.create(blog, (err, blogs) => {
-        if(err){
-            res.render("new")
-        } else {
-            console.log(blogs)
-            res.redirect("/blogs")
-            }
-        });
+
+        Blog.create(blog,  (err, blogs) => {
+            if(err){
+                console.log(err)
+            } else {
+                res.redirect("/blogs")
+                }
+            });
+    } else {
+        res.redirect("blogs/new")
+    }
 });
 
 //show a focused view of a single sellected blog post

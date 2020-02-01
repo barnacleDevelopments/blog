@@ -1,0 +1,139 @@
+/* Home */
+.home-intro {
+    margin: 50px auto;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+.intro-content {
+    margin: 0px 10px 0px 10px ;
+}
+
+.intro-content h1 {
+    margin-top: 0;
+}
+
+.intro-content p {
+    font-size: 1.2rem;
+    line-height: 2rem;
+    margin: 0;
+}
+
+.intro-portrait {
+    width: 250px;
+    margin: 0 auto;
+}
+
+.intro-portrait img {
+    width: 100%;
+}
+
+
+.blog-intro-img {
+    width: 250px;
+    margin: 0 auto;
+}
+
+.blog-intro-img img {
+    width: 100%;
+}
+
+@media screen and (min-width: 900px) {
+    .personal-intro {
+        display: grid;
+        grid-template-columns: auto 2fr;
+    }
+
+    .blog-intro {
+        display: grid;
+        grid-template-columns: 2fr auto;
+        margin-top: 15px;
+ 
+     }
+}
+
+@media screen and (min-width: 600px) and (max-width: 900px) {
+   
+    .personal-intro {
+        margin-bottom: 15px;;
+    }
+
+    .intro-portrait {
+        width: 300px;
+    }
+    
+    .blog-intro-img {
+        width: 300px;
+        margin-top: 15px;
+    }
+
+    .intro-content {
+        text-align: center;
+    }
+
+    .intro-content h1 {
+        margin-top: 15px;
+    }
+
+     .blog-intro {
+       display: flex;
+       flex-direction: column-reverse;
+       text-align: center;
+   }
+}
+
+@media screen and (min-width: 300px) and (max-width: 600px) {
+   .personal-intro {
+       margin-bottom: 15px;;
+   }
+   
+    .intro-content {
+       text-align: center;
+   }
+
+   .blog-intro {
+       display: flex;
+       flex-direction: column-reverse;
+   }
+    
+}
+
+/* home cards */
+.card-area {
+    display: grid;
+    grid-template-columns:  repeat(3, 1fr);
+    grid-gap: 10px;
+}
+
+.card-img {
+    display: flex;
+    align-items: flex-end;
+}
+
+.card-img img {
+    width: 100%;
+    border-top-left-radius: 5px ;
+    border-top-right-radius: 5px;
+}
+
+.card-content {
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    border-bottom-left-radius: 5px ;
+    border-bottom-right-radius: 5px;
+    padding: 10px;
+}
+
+.card-content h2 {
+    margin: 0px;
+}
+
+@media screen and (min-width: 300px) and (max-width: 600px) {
+    .card-area {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 10px;
+    }
+}
+

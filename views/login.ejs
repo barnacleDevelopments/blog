@@ -1,13 +1,13 @@
 <% include partials/header %>
     <div class="login-container">
         <form action="/login" method="post">
-            <div>
-                <lable for="username">User:</lable>
-                <input type="text" name="username">
-            </div>
-            <div>
-                <label for="password">Password:</label>
-                <input type="text" name="password">
+            <div class="login-fields">
+                <div>
+                    <input placeholder="Username" type="text" name="username">
+                </div>
+                <div>
+                    <input placeholder="Password" type="text" name="password">
+                </div>
             </div>
             <button>Login</button>
         </form>
