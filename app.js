@@ -24,9 +24,9 @@ const blogRoutes = require("./routes/blog-routes"),
     app.use(express.static("public"));
     app.set("view engine", "ejs");
 
-    process.env.DATABASE="mongodb://localhost/blog"
+    process.env.DATABASE="mongodb+srv://firstdb:WEh7wlm9iNfqTLxM@cluster0-1t4lu.mongodb.net/test?retryWrites=true&w=majority"
     process.env.SESSION_SECRET="GrapesFallFromBranches"
-    
+
     mongoose.connect(process.env.DATABASE, { useUnifiedTopology: true, useNewUrlParser: true } )
     .then(() => {
         console.log("connected to database")

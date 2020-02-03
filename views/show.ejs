@@ -19,13 +19,17 @@
                     
                 </div>
             </div>
-         
+
+           <% if(currentUser && currentUser._id.equals("5e316a84debc702af83b8510")) { %>
             <div class="show-btns">
                 <form action="/blogs/:id?_method=DELETE" method="POST">
                     <input type="submit" value="DELETE">
                 </form>
                 <a href="/blogs/<%=blog._id%>/edit"><button>EDIT</button></a>
             </div>
+            <% } else { %>
+            <div></div>
+           <% } %>
     </div>
    
 <% include partials/footer %>
