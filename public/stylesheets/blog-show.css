@@ -28,7 +28,11 @@
     line-height: 2.3rem;
 }
 
-.content-container p {
+.content-container > p {
+    font-size: 1.3rem;
+}
+
+.content-container > div {
     font-size: 1.3rem;
 }
 
@@ -83,4 +87,15 @@
 .show-btns a button {
     border: 2px solid rgba(189, 0, 0, 0.6);
     color: rgba(189, 0, 0, 0.6);
+}
+
+@media screen and (min-width: 312px) and (max-width: 600px) {
+    .header-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .show-img {
+        margin-top: 15px;
+    }
 }

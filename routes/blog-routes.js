@@ -15,16 +15,14 @@ router.get("/", (req, res) => {
 router.get("/blogs", (req, res) => {
     Blog.find({}, (err, blogs) => {
         if(err){
-            console.log(err)
         } else {
-            console.log(blogs)
             res.render("blogs", {blogs: blogs});
         }
     });
 });
 
 router.get("/blogs/new", isMember, (req, res) => {
-        if(req.user._id.equals("5e316a84debc702af83b8510")) {
+        if(req.user._id.equals("5e307761fc136d2884cc1a73")) {
             res.render("new")
         } else {
             res.send("admin autherisation required")
@@ -34,7 +32,7 @@ router.get("/blogs/new", isMember, (req, res) => {
 
 //create blog post
 router.post("/blogs", isMember, (req, res) => {
-    if(req.user._id.equals("5e316a84debc702af83b8510")) {
+    if(req.user._id.equals("5e307761fc136d2884cc1a73")) {
 const date = new Date()
 
 const month = date.getMonth(),
@@ -61,7 +59,7 @@ const month = date.getMonth(),
 
         Blog.create(blog,  (err, blogs) => {
             if(err){
-                console.log(err)
+                res.redirect("/blogs")
             } else {
                 res.redirect("/blogs")
                 }
@@ -88,10 +86,9 @@ router.get("/blogs/:id", (req, res) => {
 
 //render edit page 
 router.get("/blogs/:id/edit", isMember, (req, res) => {
-    if(req.user._id.equals("5e316a84debc702af83b8510")) {
+    if(req.user._id.equals("5e307761fc136d2884cc1a73")) {
     Blog.findById(req.params.id, (err, blogEdit) => {
         if(err){
-            console.log(err);
             res.redirect("/blogs"); 
         } else {
             res.render("edit", {blog: blogEdit});
@@ -105,7 +102,7 @@ router.get("/blogs/:id/edit", isMember, (req, res) => {
 
 
 router.put("/blogs/:id", isMember, (req, res) => {
-    if(req.user._id.equals("5e316a84debc702af83b8510")) {
+    if(req.user._id.equals("5e307761fc136d2884cc1a73")) {
     let blog = {
         title: req.body.title,
         content: req.body.content,
@@ -118,7 +115,7 @@ router.put("/blogs/:id", isMember, (req, res) => {
 
      Blog.findByIdAndUpdate(req.params.id, blog, (err, updatedBlog) => {
           if(err) {
-              console.log(err)
+              res.redirect("/blogs")
          } else {
              res.redirect("/blogs/" + updatedBlog._id)
          }
@@ -129,10 +126,10 @@ router.put("/blogs/:id", isMember, (req, res) => {
 });
 
 router.delete("/blogs/:id", isMember, (req, res) => {
-    if(req.user._id.equals("5e316a84debc702af83b8510")) {
+    if(req.user._id.equals("5e307761fc136d2884cc1a73")) {
     Blog.findOneAndDelete(req.params.id, req.body.blog, (err) => {
         if(err) {
-            console.log(err);
+            res.redirect("/blogs")
         } else {
             res.redirect("/blogs");
         }

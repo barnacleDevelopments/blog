@@ -125,13 +125,23 @@
 }
 
 
-@media screen and (min-width: 600px) and (max-width: 900px) {
+@media screen and (min-width: 600px) and (max-width: 992px) {
     .member-nav {
         margin-top: 15px;
         margin-bottom: 15px;
     }
+
+  
+
+
 }
 
-@media screen and (min-width: 300px) and (max-width: 600px) {
-
+@media screen and (min-width: 312px) and (max-width: 600px) {
+    .content-area {
+        display: flex;
+        flex-direction: column;
+        height: 100px;
+        justify-content: space-between;
+        margin-top: 25px;
+    }
 }

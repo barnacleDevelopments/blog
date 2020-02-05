@@ -6,14 +6,11 @@ const textArea = document.querySelector(".text-area")
 const blogForm = document.querySelector(".blog-create-form")
 const textContent = document.querySelector(".text-content")
 
-console.log(blogForm)
-
 function format(command, value) {
     document.execCommand(command, false, value);
  }
 
  function getContent() {
-     console.log(textArea.textContent)
     textContent.value = textArea.innerHTML
  }
 

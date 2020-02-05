@@ -16,7 +16,7 @@ const User = require("./models/User")
 const blogRoutes = require("./routes/blog-routes"),
       authRoutes = require("./routes/auth-routes")
 
-    
+      var port = process.env.PORT || 3000
     app.use(helmet({dnsPrefetchControl: {allow: true}}))
     app.use(methodOverride("_method"));
     app.use(expressSanitizer());
@@ -29,40 +29,38 @@ const blogRoutes = require("./routes/blog-routes"),
 
     mongoose.connect(process.env.DATABASE, { useUnifiedTopology: true, useNewUrlParser: true } )
     .then(() => {
-        console.log("connected to database")
+        app.use(session({
+            secret: process.env.SESSION_SECRET,
+            resave: false,
+            saveUninitialized: false,
+          }));
+          
+          app.use(passport.initialize());
+          app.use(passport.session());
+    
+          passport.use(User.createStrategy())
+    
+          passport.use(new LocalStrategy(User.authenticate()))
+    
+          passport.serializeUser(User.serializeUser())
+          passport.deserializeUser(User.deserializeUser())
+          
+          app.use(function(req, res, next) {
+                res.locals.currentUser = req.user
+                next()
+          })
+    
+          app.use(blogRoutes)
+          app.use(authRoutes)
+
     }).catch((err) => {
-        console.log(err)
+        
     })
-
-    app.use(session({
-        secret: process.env.SESSION_SECRET,
-        resave: false,
-        saveUninitialized: false,
-      }));
-      
-      app.use(passport.initialize());
-      app.use(passport.session());
-
-      passport.use(User.createStrategy())
-
-      passport.use(new LocalStrategy(User.authenticate()))
-
-      passport.serializeUser(User.serializeUser())
-      passport.deserializeUser(User.deserializeUser())
-      
-      app.use(function(req, res, next) {
-            res.locals.currentUser = req.user
-            next()
-      })
-
-      app.use(blogRoutes)
-      app.use(authRoutes)
 
     
     //get all the blogs
 
-    app.listen(3000, () => {
-        console.log("Blog started!")        
+    app.listen(port, () => {     
     })
 
     
