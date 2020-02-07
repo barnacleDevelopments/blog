@@ -17,12 +17,43 @@ body {
 .navbar {
     background-color: rgb(238, 238, 238);
     display: grid;
-    grid-template-columns: 1fr 3fr 2fr;
+    grid-template-columns: 1fr 2fr 1fr 1fr;
+    align-items: center;
+    margin-bottom: 25px;;
+}
+
+
+.search-container input {
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    height: 25px;;
+}
+
+.search-container div {
+    display: flex;
+    width: 100%;
+    padding: 10px;
+    background-color: white;
+}
+
+.search-container ul {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+ 
+
+}
+
+.search-container li {
+    list-style-type: none; 
 }
 
 .main-nav {
     width: 100%;
     display: grid;
+    grid-template-columns: 1fr;
 }
 
 
@@ -39,7 +70,7 @@ body {
 .main-nav ul {
     display: grid;
     justify-content: space-around;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
     font-size: 1.5rem;
     list-style-type: none;
@@ -134,12 +165,13 @@ body {
     .main-nav li {
         text-align: left;
     }
-
-    
 }
 
 
 @media screen and (min-width: 768px) and (max-width: 992px) {
+    .navbar {
+        grid-template-columns: 1fr 1fr 1fr 1fr
+    }
 
     .logout-btn {
         margin: 0 auto;
@@ -154,30 +186,47 @@ body {
         display: none;
      }
     
+     .navbar input {
+        width: 100px
+    }
 }
 
 @media screen and (min-width: 600px) and (max-width: 768px) {
+
     .navbar {
-        grid-template-columns: 1fr;
+        justify-content: center;
+        align-items: center;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-nav {
+        display: none;
     }
     
     .member-nav ul {
         grid-template-columns: 1fr;
     }
-    
-    .main-nav {
-        display: none;
-    }
 
     .member-nav {
         display: none
     }
+
+    .main-logo {
+        justify-content: center;
+    }
+
+   
 }
 
 @media screen and (min-width: 312px) and (max-width: 600px) {
     .navbar {
         grid-template-columns: 1fr;
     }
+
+    .navbar input {
+        margin: 25px auto;
+    }
+
 
     .member-nav ul {
         grid-template-columns: 1fr;

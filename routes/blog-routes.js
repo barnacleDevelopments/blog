@@ -21,6 +21,16 @@ router.get("/blogs", (req, res) => {
     });
 });
 
+router.get("/blogs/search", (req, res) => {
+    Blog.find({}, (err, blogs) => {
+        if(err){
+        } else {
+            res.send(blogs);
+        }
+    });
+});
+
+
 router.get("/blogs/new", isMember, (req, res) => {
         if(req.user._id.equals("5e307761fc136d2884cc1a73")) {
             res.render("new")
@@ -127,7 +137,7 @@ router.put("/blogs/:id", isMember, (req, res) => {
 
 router.delete("/blogs/:id", isMember, (req, res) => {
     if(req.user._id.equals("5e307761fc136d2884cc1a73")) {
-    Blog.findOneAndDelete(req.params.id, req.body.blog, (err) => {
+    Blog.findByIdAndRemove(req.params.id, req.body.blog, (err) => {
         if(err) {
             res.redirect("/blogs")
         } else {

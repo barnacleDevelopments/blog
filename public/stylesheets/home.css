@@ -2,6 +2,8 @@
 
 .home-intro {
     margin: 25px 0px 25px 0px;
+    display: grid;
+    grid-template-columns: 1fr;
 }
 
 .personal-intro {
@@ -57,8 +59,6 @@
     .personal-intro {
         margin-bottom: 15px;
         grid-template-columns: 1fr;
-        align-items: center;
-        justify-content: center;
         height: 450px;
     }
 
@@ -93,7 +93,6 @@
     .personal-intro {
         margin-bottom: 15px;
         grid-template-columns: 1fr ;
-        height: 550px;
     }
 
     .blog-intro {
@@ -113,6 +112,7 @@
 
     .intro-content {
         text-align: center;
+        margin-bottom: 25px;;
     }
 
     .intro-content h1 {
@@ -132,7 +132,6 @@
     .personal-intro {
         margin-bottom: 25px;
         grid-template-columns: 1fr ;
-        height: 900px;
     }
 
     .blog-intro {

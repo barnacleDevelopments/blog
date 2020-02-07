@@ -22,7 +22,7 @@
 
            <% if(currentUser && currentUser._id.equals("5e307761fc136d2884cc1a73")) { %>
             <div class="show-btns">
-                <form action="/blogs/:id?_method=DELETE" method="POST">
+                <form action="/blogs/<%=blog._id%>?_method=DELETE" method="POST">
                     <input type="submit" value="DELETE">
                 </form>
                 <a href="/blogs/<%=blog._id%>/edit"><button>EDIT</button></a>

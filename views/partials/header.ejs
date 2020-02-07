@@ -23,8 +23,14 @@
       <div class="main-nav">
         <ul>
             <li><a href="/blogs">Blog</a></li>
-          </ul>
+            <li><a href="/blogs">Projects</a></li>
+        </ul>
       </div>
+      <div class="search-container">
+        <input id="blog-search" type="text">
+        <div id="searched-items"></div>
+      </div>
+  
        
       <div class="member-nav">
         <% if(!currentUser) { %>
@@ -38,11 +44,6 @@
           </div>
           <% } %>
           <% console.log(currentUser) %>
-         
- 
       </div>
-        
-
     </div>
-  
   </div>
